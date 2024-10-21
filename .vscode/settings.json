@@ -1,0 +1,26 @@
+{
+  "pgsql.connections": [
+    {
+      "host": "localhost",
+      "dbname": "University",
+      "user": "postgres",
+      "password": "PASSWORD",
+      "emptyPasswordInput": false,
+      "port": "5432",
+      "profileName": "local_postgres"
+    }
+  ],
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "driver": "PostgreSQL",
+      "name": "University",
+      "group": "localhost",
+      "database": "university",
+      "username": "postgres",
+      "password": "PASSWORD"
+    }
+  ]
+}
