@@ -1,0 +1,29 @@
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:16.4
+    restart: unless-stopped
+    shm_size: 1024mb
+    volumes:
+      - ./init-db:/docker-entrypoint-initdb.d
+      - ./.docker/postgres_data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+      - 9991:3000
+      - 9992:8080
+      - 9993:9993
+    env_file:
+      - ./.env
+  metabase:
+    container_name: metabase
+    image: metabase/metabase:latest
+    restart: unless-stopped
+    network_mode: service:postgres
+    depends_on:
+      - postgres
+  pgadmin4:
+    image: dpage/pgadmin4:latest
+    restart: unless-stopped
+    network_mode: service:postgres
+    env_file:
+      - ./.env
